@@ -20,7 +20,7 @@ const markMap = (coordinate, marker, stepsSoFar, steps) => {
 
     // for part 1, simply store the intersections as: [x, y]
     intersections.push(coordinate)
-    // for part 2, each intersection is stored in the format of: [x, y, totalStepsToArrive]
+    // for part 2, each intersection is stored in the format of: [x, y, totalStepsTravelled]
     intersectionsWithSteps.push([...coordinate, marked.reduce((acc, curr) => acc + curr.stepsTravelled, 0)])
     console.log(`intersection ${coordinate} took steps: ${marked[0].stepsTravelled} ${marked[1].stepsTravelled}`)
 
@@ -80,6 +80,6 @@ processInstructions(input[1], 'L2')
 const q1 = intersections.map(([x, y]) => Math.abs(x) + Math.abs(y)).sort((a, b) => a - b)
 console.log('part 1: ', q1[0])
 
-// sort intersectionsWithSteps ([x, y, totalStepsToArrive]) by totalStepsToArrive
+// sort intersectionsWithSteps ([x, y, totalStepsTravelled]) by totalStepsTravelled
 const q2 = intersectionsWithSteps.sort((a, b) => a[2] - b[2])
 console.log('part 2:', q2[0][2])
