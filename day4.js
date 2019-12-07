@@ -19,4 +19,26 @@ const meetCriteria = (password) => {
   return checks.every(check => check(pw))
 }
 
-module.exports = {meetCriteria}
+const newAdjacentRule = arr => {
+  let doesntCount = []
+  let found = false
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (!doesntCount.includes(arr[i]) && arr[i] === arr[i + 1]) {
+      if (i + 2 < arr.length && arr[i + 2] === arr[i]) {
+        doesntCount.push(arr[i])
+      } else {
+        found = true
+        break
+      }
+    }
+  }
+  return found
+}
+
+const meetNewCriteria = (password) => {
+  const pw = password.toString().split('').map(s => parseInt(s))
+  const checks = [isSixDigit, neverDecreases, newAdjacentRule]
+  return checks.every(check => check(pw))
+}
+
+module.exports = {meetCriteria, meetNewCriteria}
