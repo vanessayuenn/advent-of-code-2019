@@ -2,8 +2,6 @@ const assert = require('assert')
 const {it, run} = require('./test')
 const {meetCriteria, meetNewCriteria} = require('./day4')
 
-console.log('===== tests =====')
-
 it('111111 should meet the cirteria', () => {
   assert.equal(meetCriteria(111111), true)
 })
